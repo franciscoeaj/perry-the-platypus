@@ -1,28 +1,27 @@
 require("dotenv").config();
 
-const Koa = require("koa");
-const app = new Koa();
-const port = process.env.PORT || 80;
+const Koa = {
+  Instance: require("koa"),
+  Router: require("koa-router"),
+  Logger: require("koa-logger")
+};
 
-// logger
-app.use(async (ctx, next) => {
-  await next();
-  const rt = ctx.response.get("X-Response-Time");
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
-});
+const app = new Koa.Instance();
+const router = new Koa.Router();
+const port = process.env.PORT || 3000;
 
-// x-response-time
-app.use(async (ctx, next) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  ctx.set("X-Response-Time", `${ms}ms`);
-});
+app.use(Koa.Logger());
 
-// response
-app.use(async ctx => {
+router.get("/", (ctx, next) => {
   ctx.body = "Hello World!";
 });
 
-console.log(`Listening on port ${port}...`);
+router.post("/notification/listener", (ctx, next) => {
+  console.log(ctx.request);
+  ctx.body = "POST req made successfully";
+});
+
+app.use(router.routes());
+app.use(router.allowedMethods());
 app.listen(port);
+console.log(`Listening on port ${port}...`);
