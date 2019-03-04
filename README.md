@@ -11,5 +11,6 @@ cd ../web
 yarn
 yarn start```
 
+
 ## Future work
 Put the web and api modules on a docker config (maybe play a bit with k8s for personal experience) file to use them as separate microservices
