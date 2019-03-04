@@ -3,5 +3,8 @@
   "version": "0.1.0",
   "main": "index.js",
   "author": "franciscoeaj",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0"
+  }
 }
