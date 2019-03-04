@@ -1,6 +1,8 @@
+require("dotenv").config();
+
 const Koa = require("koa");
 const app = new Koa();
-const port = 80;
+const port = process.env.PORT || 80;
 
 // logger
 app.use(async (ctx, next) => {
