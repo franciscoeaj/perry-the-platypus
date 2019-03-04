@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "franciscoeaj",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "koa": "^2.7.0"
   }
