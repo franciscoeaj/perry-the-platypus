@@ -19,6 +19,7 @@
     "lodash": "^4.17.11"
   },
   "devDependencies": {
+    "fs": "^0.0.1-security",
     "nodemon": "^1.18.10"
   }
 }

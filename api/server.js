@@ -1,8 +1,6 @@
 require("dotenv").config();
 
-const configs = require("./constants/payment-method-config");
-const endpoints = configs.endpoints;
-const constants = configs.constants;
+const utils = require("./utils");
 
 const Koa = {
   Instance: require("koa"),
@@ -19,25 +17,25 @@ const port = process.env.PORT || 3000;
 app.use(Koa.Logger());
 app.use(Koa.BodyParser());
 
-router.get("/", (ctx, next) => {
+router.get("/", ctx => {
   ctx.body = "Hello World!";
 });
 
-router.post("/notification/listener", (ctx, next) => {
+router.post("/api/notification/listener", async ctx => {
   if (ctx.is("application/x-www-form-urlencoded")) {
-    if (
-      ctx.request.origin ===
-      `${constants.PS_REQUEST_PROTOCOL}://${constants.PS_REQUEST_HOST}`
-    ) {
-      // make a request asking about the received transaction code and handle it
-      // axios is available to do so
-    }
+    console.log(utils.getBaseApiURL(false), ctx.request.header.origin);
 
-    console.log(endpoints);
-    ctx.body = "enos";
-  } else {
-    ctx.body = "Invalid request";
+    if (ctx.request.header.origin === utils.getBaseApiURL()) {
+      const { notificationCode, notificationType } = ctx.request.body;
+      const url = utils.getNotificationApiURL(notificationCode);
+      const response = await axios.get(url);
+
+      ctx.status = 200;
+      return;
+    }
   }
+
+  ctx.status = 403;
 });
 
 app.use(router.routes());
