@@ -1,6 +1,8 @@
 # perry-the-platypus
 
-Just another super secret project
+Just another super secret project, you may have to ask Perry the Playtus' help to figure it out
+
+![](./perry.jpg)
 
 ## Starting the app
 
