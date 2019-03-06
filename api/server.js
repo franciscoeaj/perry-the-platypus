@@ -1,5 +1,9 @@
 require("dotenv").config();
 
+const configs = require("./constants/payment-method-config");
+const endpoints = configs.endpoints;
+const constants = configs.constants;
+
 const Koa = {
   Instance: require("koa"),
   Router: require("koa-router"),
@@ -20,9 +24,17 @@ router.get("/", (ctx, next) => {
 });
 
 router.post("/notification/listener", (ctx, next) => {
-  // verify if its form-urlencoded and from which url the request has been made
   if (ctx.is("application/x-www-form-urlencoded")) {
-    // TODO: make request to api given the received transaction code and handle the returned data
+    if (
+      ctx.request.origin ===
+      `${constants.PS_REQUEST_PROTOCOL}://${constants.PS_REQUEST_HOST}`
+    ) {
+      // make a request asking about the received transaction code and handle it
+      // axios is available to do so
+    }
+
+    console.log(endpoints);
+    ctx.body = "enos";
   } else {
     ctx.body = "Invalid request";
   }
