@@ -1,7 +1,5 @@
 require("dotenv").config();
 
-const utils = require("./utils");
-
 const Koa = {
   Instance: require("koa"),
   Router: require("koa-router"),
@@ -9,6 +7,8 @@ const Koa = {
   BodyParser: require("koa-bodyparser")
 };
 
+const utils = require("./utils");
+const convert = require("xml-js");
 const app = new Koa.Instance();
 const router = new Koa.Router();
 const axios = require("axios");
@@ -23,12 +23,18 @@ router.get("/", ctx => {
 
 router.post("/api/notification/listener", async ctx => {
   if (ctx.is("application/x-www-form-urlencoded")) {
-    console.log(utils.getBaseApiURL(false), ctx.request.header.origin);
-
     if (ctx.request.header.origin === utils.getBaseApiURL()) {
       const { notificationCode, notificationType } = ctx.request.body;
       const url = utils.getNotificationApiURL(notificationCode);
       const response = await axios.get(url);
+
+      const data = convert.xml2json(response.data, {
+        compact: true,
+        spaces: 2,
+        nativeType: true
+      });
+
+      // console.log(data);
 
       ctx.status = 200;
       return;
