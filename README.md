@@ -1,6 +1,6 @@
 # perry-the-platypus
 
-Just another super secret project, you may have to ask Perry the Playtus' help to figure it out
+Just another super secret project you may have to ask Perry the Platypus' help to figure it out
 
 ![](./perry.jpg)
 
