@@ -9,13 +9,15 @@ Just another super secret project you may have to ask Perry the Platypus' help t
 Basically all you need to get the api module up and then the web module up. To do so, run the following commands (assuming you're on the root folder of this project):
 
 ```
-cd api
-yarn
-yarn star
-cd ../web
-yarn
-yarn start
+$ cd api
+$ yarn
+$ yarn start
+$ cd ../web
+$ yarn
+$ yarn start
 ```
+
+Note: as for 0.1.0, `yarn start` on the web module is just an alias for `yarn serve`
 
 ## Future work
 

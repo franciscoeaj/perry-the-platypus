@@ -1,8 +1,10 @@
 {
-  "name": "web",
+  "name": "perry-the-platypus-dash",
   "version": "0.1.0",
+  "author": "Francisco Júnior <franciscojunior@me.com>",
   "private": true,
   "scripts": {
+    "start": "yarn serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"

@@ -1,0 +1,9 @@
+{
+  "name": "perry-the-platypus",
+  "version": "0.1.0",
+  "description": "A small (node/vue) dashboard linked with PagSeguro for invoice management",
+  "repository": "https://github.com/franciscoeaj/perry-the-platypus.git",
+  "author": "Francisco Júnior <franciscojunior@me.com>",
+  "license": "MIT",
+  "private": false
+}

@@ -1,8 +1,8 @@
 {
-  "name": "api",
+  "name": "perry-the-platypus-api",
   "version": "0.1.0",
   "main": "server.js",
-  "author": "franciscoeaj",
+  "author": "Francisco Júnior <franciscojunior@me.com>",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon server.js",
