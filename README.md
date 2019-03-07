@@ -6,7 +6,7 @@ Just another super secret project you may have to ask Perry the Platypus' help t
 
 ## Starting the app
 
-Basically all you need to get the api module up and then the web module up. To do so, run the following commands (assuming you're on the root folder of this project):
+Basically all you need to do is get the api module up and then the web module up. To do so, run the following commands (assuming you're on the root folder of this project):
 
 ```
 $ cd api
