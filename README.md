@@ -6,18 +6,12 @@ Just another super secret project you may have to ask Perry the Platypus' help t
 
 ## Starting the app
 
-Basically all you need to do is get the api module up and then the web module up. To do so, run the following commands (assuming you're on the root folder of this project):
+Basically all you need to do is build our docker image and let docker-compose handle all the rest:
 
 ```
-$ cd api
-$ yarn
-$ yarn start
-$ cd ../web
-$ yarn
-$ yarn start
+$ docker build -t perry-the-platypus .
+$ docker-compose up -d
 ```
-
-Note: as for 0.1.0, `yarn start` on the web module is just an alias for `yarn serve`
 
 ## Future work
 

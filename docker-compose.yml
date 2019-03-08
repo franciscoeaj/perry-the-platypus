@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  api:
+    image: perry-the-platypus
+    command:
+      - cd api && yarn dev
+    ports:
+      - 80:80
+    restart: on-failure
+    environment:
+      - NODE_ENV=development
+      - PORT=80
+  web:
+    image: perry-the-platypus
+    command:
+      - cd web && yarn serve
+    ports:
+      - 3000:8080
+    restart: on-failure
+    environment:
+      - NODE_ENV=development
