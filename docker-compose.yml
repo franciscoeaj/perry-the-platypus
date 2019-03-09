@@ -3,19 +3,24 @@ services:
   api:
     image: perry-the-platypus
     command:
-      - cd api && yarn dev
+      - cd /home/api && yarn dev
     ports:
-      - 80:80
+      - 8000:80
     restart: on-failure
+    volumes:
+      - ./api:/home/api
     environment:
       - NODE_ENV=development
       - PORT=80
+
   web:
     image: perry-the-platypus
     command:
-      - cd web && yarn serve
+      - cd /home/web && yarn serve
     ports:
       - 3000:8080
     restart: on-failure
+    volumes:
+      - ./web:/home/web
     environment:
       - NODE_ENV=development

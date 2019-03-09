@@ -1,11 +1,11 @@
 FROM node:10-alpine
 
 WORKDIR /api
-COPY . /api
+COPY . /home/api
 RUN yarn install
 
 WORKDIR /web
-COPY . /web
+COPY . /home/web
 RUN yarn install
 
 EXPOSE 80
