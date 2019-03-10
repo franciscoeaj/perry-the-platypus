@@ -67,10 +67,16 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
       </li>
     </ul>
+    <a-button type="primary">Button</a-button>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import { Button } from "ant-design-vue";
+
+Vue.component(Button.name, Button);
+
 export default {
   name: "HelloWorld",
   props: {
