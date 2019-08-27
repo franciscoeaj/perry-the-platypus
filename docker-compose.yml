@@ -26,9 +26,20 @@ services:
       - ./web:/home/web
     environment:
       - NODE_ENV=development
+    depends_on:
+      - api
 
   database:
     image: mariadb:latest
+    restart: always
     environment:
     - MYSQL_DATABASE=perry
     - MYSQL_ROOT_PASSWORD=ultrasecretpassword
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+      - database
