@@ -1,9 +1,9 @@
-const { constants, endpoints } = require("./constants/payment-method-config");
-const PROTOCOL = constants.PS_REQUEST_PROTOCOL;
-const HOST = constants.PS_REQUEST_HOST;
+const { constants, endpoints } = require('./constants/payment-method-config')
+const PROTOCOL = constants.PS_REQUEST_PROTOCOL
+const HOST = constants.PS_REQUEST_HOST
 const AUTH_PARAMS = `?email=${process.env.PS_SELLER_EMAIL}&token=${
   process.env.PS_SELLER_TOKEN
-}`;
+}`
 
 /**
  * Get the notifications API's complete URL
@@ -15,22 +15,22 @@ const AUTH_PARAMS = `?email=${process.env.PS_SELLER_EMAIL}&token=${
  */
 const getNotificationApiURL = notificationCode => {
   return `${getEndpointApiURL(endpoints.notifications)}/${notificationCode +
-    AUTH_PARAMS}`;
-};
+    AUTH_PARAMS}`
+}
 
 /**
  * Get the base API URL
  * @param {boolean} ws - Whether do you want or not 'ws.' at the beginning of the URL
  */
-const getBaseApiURL = ws => `${PROTOCOL}://${ws ? "ws." + HOST : HOST}`;
+const getBaseApiURL = ws => `${PROTOCOL}://${ws ? 'ws.' + HOST : HOST}`
 
 /**
  * Get the endpoint (passed by param) API's complete URL
  *
  * @param {String} endpoint - The endpoint
  */
-const getEndpointApiURL = endpoint => `${getBaseApiURL(true)}/${endpoint}`;
+const getEndpointApiURL = endpoint => `${getBaseApiURL(true)}/${endpoint}`
 
-const utils = { getBaseApiURL, getNotificationApiURL };
+const utils = { getBaseApiURL, getNotificationApiURL }
 
-module.exports = utils;
+module.exports = utils

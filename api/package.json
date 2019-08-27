@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "fs": "^0.0.1-security",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "standard": "^14.0.2"
   }
 }
