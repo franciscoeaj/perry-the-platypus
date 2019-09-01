@@ -1,12 +1,24 @@
 version: '3.3'
 services:
+  database:
+    image: mariadb:latest
+    environment:
+    - MYSQL_ROOT_PASSWORD=ultrasecretpassword
+    - MYSQL_DATABASE=perry
+
+  adminer:
+    image: adminer
+    ports:
+      - 8081:8080
+    depends_on:
+      - database
+
   api:
     image: perry-the-platypus
     command:
       - cd /home/api && yarn dev
     ports:
       - 8000:80
-    restart: on-failure
     volumes:
       - ./api:/home/api
     environment:
@@ -21,25 +33,9 @@ services:
       - cd /home/web && yarn serve
     ports:
       - 3000:8080
-    restart: on-failure
     volumes:
       - ./web:/home/web
     environment:
       - NODE_ENV=development
     depends_on:
       - api
-
-  database:
-    image: mariadb:latest
-    restart: always
-    environment:
-    - MYSQL_DATABASE=perry
-    - MYSQL_ROOT_PASSWORD=ultrasecretpassword
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8081:8080
-    depends_on:
-      - database

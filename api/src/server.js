@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+
 const Koa = {
   Instance: require('koa'),
   Router: require('koa-router'),
@@ -7,12 +8,22 @@ const Koa = {
   BodyParser: require('koa-bodyparser')
 }
 
+const database = require('./config/Database')
 const utils = require('./utils')
 const convert = require('xml-js')
 const app = new Koa.Instance()
 const router = new Koa.Router()
 const axios = require('axios')
 const port = process.env.PORT || 3000
+
+database
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.')
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err)
+  })
 
 app.use(Koa.Logger())
 app.use(Koa.BodyParser())
