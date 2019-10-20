@@ -1,7 +1,7 @@
 class Customer {
   constructor (id, documentValue, documentType, name, street, streetNumber, city, state, addressAdditionalInfo) {
     this.id = id
-    this.document = documentValue
+    this.documentValue = documentValue
     this.documentType = documentType
     this.name = name
     this.street = street
