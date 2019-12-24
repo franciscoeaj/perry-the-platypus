@@ -10,7 +10,9 @@ Basically all you need to do is build our docker image and let docker-compose ha
 
 ```
 $ docker build -t perry-the-platypus .
-$ docker-compose up -d
+$ docker-compose up -d 
+# OR
+$ docker stack deploy perry
 ```
 
 ## Future work

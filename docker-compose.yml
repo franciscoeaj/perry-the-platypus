@@ -4,9 +4,9 @@ services:
     image: postgres:latest
     restart: always
     environment:
+    - POSTGRES_DB=perry
     - POSTGRES_USER=perry
     - POSTGRES_PASSWORD=ultrasecretpassword
-    - POSTGRES_DB=perry
 
   adminer:
     image: adminer
