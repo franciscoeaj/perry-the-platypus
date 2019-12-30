@@ -3,19 +3,6 @@ const Sequelize = require('sequelize')
 
 class Customer extends Sequelize.Model {}
 
-// id (maybe integer?, PK, AI);
-// document (String, document value/number represented as a String);
-// documentType (String/ENUM, should be "CPF" or "CNPJ");  00.000.000/0000-00 (14 dig, 18 com ce) | 000.000.000-00 (11 dig, 14 com ce)
-// firstName (String, customer's first name);
-// lastName (String, customer's last name);
-// nickname (String, how the customer wants to be called);
-// street (String, street address);
-// streetNumber (integer, street address number);
-// city (String, self-explanatory);
-// state (String, self-explanatory);
-// country (String, self-explanatory);
-// this.addressAdditionalInfo = addressAdditionalInfo
-
 Customer.init({
   id: {
     type: Sequelize.INTEGER,

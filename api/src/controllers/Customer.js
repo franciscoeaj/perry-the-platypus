@@ -1,11 +1,9 @@
-const Model = require('../models/Customer')
-const Connector = require('../config/Database')
-const Customer = new Model(Connector)
+const Customer = require('../models/Customer')
 
 class CustomerController {
   async index (ctx) {
     try {
-      const result = await Customer.all()
+      const result = await Customer.findAll()
       ctx.body = result
     } catch (error) {
       console.log(error)
