@@ -10,6 +10,22 @@ class CustomerController {
       ctx.throw(400, 'INVALID_DATA' + error)
     }
   }
+
+  async get (ctx) {
+    try {
+      const customer = await Customer.findByPk(ctx.params.id)
+
+      if (customer === null) {
+        ctx.status = 404
+        return
+      }
+
+      ctx.body = customer
+    } catch (error) {
+      console.log(error)
+      ctx.throw(400, 'INVALID_DATA' + error)
+    }
+  }
 }
 
 module.exports = new CustomerController()

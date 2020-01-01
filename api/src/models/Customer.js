@@ -12,7 +12,6 @@ Customer.init({
   documentValue: {
     type: Sequelize.STRING,
     allowNull: false
-    // TODO: validate format, must be 00.000.000/0000-00 (14 numbers, 18 considering everything) | 000.000.000-00 (11 numbers, 14 considering everything)
   },
   documentType: {
     type: Sequelize.ENUM('CPF', 'CNPJ'),
