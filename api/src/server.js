@@ -22,7 +22,7 @@ const port = process.env.PORT || 3000
 app.use(Koa.Logger())
 app.use(Koa.BodyParser())
 
-connector.sync({ force: true, logging: false })
+connector.sync({ logging: false })
   .then(() => console.info('INFO: Tables and models synchronized successfully!'))
   .catch(err => console.error('ERROR: Error synchronizing models and tables:', err))
 

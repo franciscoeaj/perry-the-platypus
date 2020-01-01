@@ -26,6 +26,18 @@ class CustomerController {
       ctx.throw(400, 'INVALID_DATA' + error)
     }
   }
+
+  async new (ctx) {
+    try {
+      const customer = await Customer.create(ctx.request.body)
+
+      ctx.status = 201
+      ctx.body = customer
+    } catch (error) {
+      console.log(error)
+      ctx.throw(400, 'INVALID_DATA' + error)
+    }
+  }
 }
 
 module.exports = new CustomerController()

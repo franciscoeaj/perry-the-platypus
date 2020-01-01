@@ -5,12 +5,16 @@ const Koa = {
 const router = new Koa.Router({ prefix: '/api/v1/customer' })
 const controller = require('../controllers/Customer')
 
-router.get('/', async (ctx, next) => {
+router.get('/', async ctx => {
   await controller.index(ctx)
 })
 
-router.get('/:id', async (ctx, next) => {
+router.get('/:id', async ctx => {
   await controller.get(ctx)
+})
+
+router.post('/', async ctx => {
+  await controller.new(ctx)
 })
 
 module.exports = router
