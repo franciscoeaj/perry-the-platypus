@@ -38,6 +38,18 @@ class CustomerController {
       ctx.throw(400, 'INVALID_DATA' + error)
     }
   }
+
+  async update (ctx) {
+    try {
+      const customer = await Customer.update(ctx.request.body, { where: { id: ctx.params.id }, returning: true })
+
+      ctx.status = 200
+      ctx.body = customer
+    } catch (error) {
+      console.log(error)
+      ctx.throw(400, 'INVALID_DATA' + error)
+    }
+  }
 }
 
 module.exports = new CustomerController()

@@ -17,4 +17,8 @@ router.post('/', async ctx => {
   await controller.new(ctx)
 })
 
+router.put('/:id', async ctx => {
+  await controller.update(ctx)
+})
+
 module.exports = router
