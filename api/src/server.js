@@ -8,7 +8,8 @@ const Koa = {
 }
 
 const Routes = {
-  Customer: require('./routes/Customer')
+  Customer: require('./routes/Customer'),
+  Gateway: require('./routes/Gateway')
 }
 
 const connector = require('./config/Database')
@@ -57,6 +58,8 @@ app.use(router.routes())
 app.use(router.allowedMethods())
 app.use(Routes.Customer.routes())
 app.use(Routes.Customer.allowedMethods())
+app.use(Routes.Gateway.routes())
+app.use(Routes.Gateway.allowedMethods())
 
 app.listen(port)
 console.log(`Listening on port ${port}...`)
