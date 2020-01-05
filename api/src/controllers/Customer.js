@@ -43,6 +43,11 @@ class CustomerController {
     try {
       const customer = await Customer.update(ctx.request.body, { where: { id: ctx.params.id }, returning: true })
 
+      if (customer[0] === 0) {
+        ctx.status = 404
+        return
+      }
+
       ctx.status = 200
       ctx.body = customer
     } catch (error) {
