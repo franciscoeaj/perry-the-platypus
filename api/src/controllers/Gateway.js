@@ -16,7 +16,7 @@ class GatewayController {
       const gateway = await Gateway.findByPk(ctx.params.id)
 
       if (gateway === null) {
-        ctx.code = 404
+        ctx.status = 404
         return
       }
 
@@ -43,6 +43,11 @@ class GatewayController {
     try {
       const gateway = await Gateway.update(ctx.request.body, { where: { id: ctx.params.id }, returning: true })
 
+      if (gateway[0] === 0) {
+        ctx.status = 404
+        return
+      }
+
       ctx.status = 200
       ctx.body = gateway
     } catch (error) {
@@ -54,6 +59,11 @@ class GatewayController {
   async delete (ctx) {
     try {
       const gateway = await Gateway.destroy({ where: { id: ctx.params.id } })
+
+      if (gateway === 0) {
+        ctx.status = 404
+        return
+      }
 
       ctx.status = 200
       ctx.body = gateway
