@@ -21,4 +21,8 @@ router.put('/:id', async ctx => {
   await controller.update(ctx)
 })
 
+router.del('/:id', async ctx => {
+  await controller.delete(ctx)
+})
+
 module.exports = router
